@@ -7,6 +7,10 @@ import rupalImg from '@/assets/web projects/rupal adventures.png';
 import urbanAdcheckImg from '@/assets/web projects/urban-adcheck.png';
 import zoomCarImg from '@/assets/app projects/zoom car.png';
 import rememberyImg from '@/assets/app projects/Remembery.png';
+import bdThumb from '@/assets/bd projects/bd thumnail.png';
+import bd1 from '@/assets/bd projects/bd project 1.png';
+import bd2 from '@/assets/bd projects/bd project 2.png';
+import bd3 from '@/assets/bd projects/bd project 3.png';
 
 const projects = [
   // Newly added Web Development projects with thumbnails
@@ -58,6 +62,18 @@ const projects = [
     tags: ['Android', 'React Native'],
     image: zoomCarImg,
     url: 'https://play.google.com/store/apps/details?id=com.zoomcars.passengerapp'
+  },
+  {
+    title: 'Business Development',
+    category: 'Business Development',
+    description: 'Providing end-to-end freelancing business development services: profile optimization, proposals, client communication, and growth strategy.',
+    tags: ['Freelancing', 'Upwork', 'Consulting'],
+    image: bdThumb,
+    slides: [
+      { image: bd1, url: 'https://www.upwork.com/freelancers/~016106235a779af4e6' },
+      { image: bd2, url: 'https://www.upwork.com/freelancers/~01b81b89f3d6c42d2d' },
+      { image: bd3, url: 'https://www.upwork.com/freelancers/~014ec283672db93ac5' },
+    ],
   },
   {
     title: 'E-Commerce Platform',
@@ -170,6 +186,21 @@ const Portfolio = () => {
                 <p className="text-muted-foreground mb-4 leading-relaxed">
                   {project.description}
                 </p>
+                {('slides' in project && (project as any).slides?.length) ? (
+                  <div className="mb-4 overflow-x-auto">
+                    <div className="flex items-center gap-3 pr-2">
+                      {(project as any).slides.map((slide: { image: string; url?: string }, i: number) => (
+                        slide.url ? (
+                          <a key={i} href={slide.url} target="_blank" rel="noopener noreferrer" className="shrink-0">
+                            <img src={slide.image} alt={`${project.title} ${i+1}`} className="h-20 w-auto object-contain rounded-md border border-border bg-background/50" />
+                          </a>
+                        ) : (
+                          <img key={i} src={slide.image} alt={`${project.title} ${i+1}`} className="h-20 w-auto object-contain rounded-md border border-border bg-background/50 shrink-0" />
+                        )
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span 
