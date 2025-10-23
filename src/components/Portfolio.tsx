@@ -1,8 +1,64 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import dealGuruImg from '@/assets/web projects/dealguru.png';
+import mazenoImg from '@/assets/web projects/mazeno adventures.png';
+import rupalImg from '@/assets/web projects/rupal adventures.png';
+import urbanAdcheckImg from '@/assets/web projects/urban-adcheck.png';
+import zoomCarImg from '@/assets/app projects/zoom car.png';
+import rememberyImg from '@/assets/app projects/Remembery.png';
 
 const projects = [
+  // Newly added Web Development projects with thumbnails
+  {
+    title: 'Deal Guru',
+    category: 'Web Development',
+    description: 'Deals discovery platform for Sweden. Browse curated offers and promotions across categories.',
+    tags: ['Next.js', 'TypeScript', 'Tailwind'],
+    image: dealGuruImg,
+    url: 'https://dealguru.se/'
+  },
+  {
+    title: 'Mazeno Adventures',
+    category: 'Web Development',
+    description: 'Adventure travel and expedition operator website with tours, itineraries and contact.',
+    tags: ['React', 'UI/UX', 'SEO'],
+    image: mazenoImg,
+    url: 'https://www.mazenoadventures.com/'
+  },
+  {
+    title: 'Rupal Adventures',
+    category: 'Web Development',
+    description: 'Outdoor adventures and tours site featuring routes, gallery and booking information.',
+    tags: ['React', 'Tailwind', 'Content'],
+    image: rupalImg,
+    url: 'https://rupaladventures.com/'
+  },
+  {
+    title: 'Urban-AdCheck',
+    category: 'Web Development',
+    description: 'Ad verification dashboard for urban campaigns with real-time tracking and reports.',
+    tags: ['Vite', 'TypeScript', 'Charts'],
+    image: urbanAdcheckImg,
+    url: 'https://urban-adcheck-web.vercel.app/'
+  },
+  {
+    title: 'Remembery',
+    category: 'App Development',
+    description:
+      'Remembery is your personal memory companion. Capture photos, videos, and thoughts, then relive and organize them with smart filters and tags. Share privately or with friends to complete your story.',
+    tags: ['Android', 'React Native', 'Firebase'],
+    image: rememberyImg,
+    url: 'https://play.google.com/store/apps/details?id=com.verygoodcore.remembery'
+  },
+  {
+    title: 'Zoom Car',
+    category: 'App Development',
+    description: 'Passenger ride-hailing app experience with booking, live tracking, and trip history for a seamless urban commute.',
+    tags: ['Android', 'React Native'],
+    image: zoomCarImg,
+    url: 'https://play.google.com/store/apps/details?id=com.zoomcars.passengerapp'
+  },
   {
     title: 'E-Commerce Platform',
     category: 'Web Development',
@@ -76,17 +132,35 @@ const Portfolio = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="glass rounded-2xl overflow-hidden group hover:shadow-2xl transition-all duration-300"
             >
-              <div className={`h-48 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
+              <div className={`relative h-64 md:h-72 overflow-hidden ${project.image ? '' : `bg-gradient-to-br ${project.gradient || ''}`}`}>
+                {project.image ? (
+                  <img src={project.image} alt={project.title} className="w-full h-full object-contain p-2 bg-background/30" />
+                ) : (
+                  <div className="w-full h-full" />
+                )}
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300" />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <Button size="sm" variant="secondary" className="mr-2">
-                    <ExternalLink className="h-4 w-4 mr-1" />
-                    View
-                  </Button>
-                  <Button size="sm" variant="outline">
-                    <Github className="h-4 w-4 mr-1" />
-                    Code
-                  </Button>
+                  {('url' in project && project.url) ? (
+                    <a href={(project as any).url} target="_blank" rel="noopener noreferrer" className="mr-2">
+                      <Button size="sm" variant="secondary">
+                        <ExternalLink className="h-4 w-4 mr-1" />
+                        View
+                      </Button>
+                    </a>
+                  ) : (
+                    <Button size="sm" variant="secondary" className="mr-2" disabled>
+                      <ExternalLink className="h-4 w-4 mr-1" />
+                      View
+                    </Button>
+                  )}
+                  {('codeUrl' in project && (project as any).codeUrl) && (
+                    <a href={(project as any).codeUrl} target="_blank" rel="noopener noreferrer">
+                      <Button size="sm" variant="outline">
+                        <Github className="h-4 w-4 mr-1" />
+                        Code
+                      </Button>
+                    </a>
+                  )}
                 </div>
               </div>
               
