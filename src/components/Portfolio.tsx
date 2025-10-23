@@ -148,9 +148,9 @@ const Portfolio = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="glass rounded-2xl overflow-hidden group hover:shadow-2xl transition-all duration-300"
             >
-              <div className={`relative h-56 sm:h-64 md:h-72 overflow-hidden ${project.image ? '' : `bg-gradient-to-br ${project.gradient || ''}`}`}>
+              <div className={`relative ${project.category === 'Business Development' ? 'h-48 md:h-56' : 'h-64 md:h-72'} overflow-hidden ${project.image ? '' : `bg-gradient-to-br ${project.gradient || ''}`}`}>
                 {project.image ? (
-                  <img src={project.image} alt={project.title} className="w-full h-full object-contain p-2 sm:p-3 bg-background/30" />
+                  <img src={project.image} alt={project.title} className="w-full h-full object-contain p-2 bg-background/30" />
                 ) : (
                   <div className="w-full h-full" />
                 )}
@@ -187,15 +187,15 @@ const Portfolio = () => {
                   {project.description}
                 </p>
                 {('slides' in project && (project as any).slides?.length) ? (
-                  <div className="mb-4 -mx-2 px-2 overflow-x-auto overscroll-x-contain touch-pan-x snap-x snap-mandatory">
-                    <div className="flex items-center gap-3 pr-2">
+                  <div className={`mb-4 ${project.category === 'Business Development' ? '' : 'overflow-x-auto'}`}>
+                    <div className={`${project.category === 'Business Development' ? 'flex flex-wrap gap-2' : 'flex items-center gap-3 pr-2'}`}>
                       {(project as any).slides.map((slide: { image: string; url?: string }, i: number) => (
                         slide.url ? (
-                          <a key={i} href={slide.url} target="_blank" rel="noopener noreferrer" className="shrink-0 snap-center">
-                            <img src={slide.image} alt={`${project.title} ${i+1}`} className="h-16 sm:h-20 md:h-24 w-auto object-contain rounded-md border border-border bg-background/50" />
+                          <a key={i} href={slide.url} target="_blank" rel="noopener noreferrer" className={`${project.category === 'Business Development' ? '' : 'shrink-0'}`}>
+                            <img src={slide.image} alt={`${project.title} ${i+1}`} className={`${project.category === 'Business Development' ? 'h-12 sm:h-14 md:h-16' : 'h-20'} w-auto object-contain rounded-md border border-border bg-background/50`} />
                           </a>
                         ) : (
-                          <img key={i} src={slide.image} alt={`${project.title} ${i+1}`} className="h-16 sm:h-20 md:h-24 w-auto object-contain rounded-md border border-border bg-background/50 shrink-0 snap-center" />
+                          <img key={i} src={slide.image} alt={`${project.title} ${i+1}`} className={`${project.category === 'Business Development' ? 'h-12 sm:h-14 md:h-16' : 'h-20'} w-auto object-contain rounded-md border border-border bg-background/50 ${project.category === 'Business Development' ? '' : 'shrink-0'}`} />
                         )
                       ))}
                     </div>
