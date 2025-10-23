@@ -9,8 +9,8 @@ import zoomCarImg from '@/assets/app projects/zoom car.png';
 import rememberyImg from '@/assets/app projects/Remembery.png';
 import bdThumb from '@/assets/bd projects/bd thumnail.png';
 import bd1 from '@/assets/bd projects/bd project 1.png';
-import bd2 from '@/assets/bd projects/bd project 2.png';
 import bd3 from '@/assets/bd projects/bd project 3.png';
+import bd2b from '@/assets/bd projects/bd project2.png';
 
 const projects = [
   // Newly added Web Development projects with thumbnails
@@ -70,9 +70,9 @@ const projects = [
     tags: ['Freelancing', 'Upwork', 'Consulting'],
     image: bdThumb,
     slides: [
-      { image: bd1, url: 'https://www.upwork.com/freelancers/~016106235a779af4e6' },
-      { image: bd2, url: 'https://www.upwork.com/freelancers/~01b81b89f3d6c42d2d' },
-      { image: bd3, url: 'https://www.upwork.com/freelancers/~014ec283672db93ac5' },
+      { image: bd1 },
+      { image: bd2b, url: 'https://fiverr.com/ar_alizada' },
+      { image: bd3 },
     ],
   },
   {
