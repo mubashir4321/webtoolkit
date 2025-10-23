@@ -35,24 +35,24 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 relative">
+    <section id="contact" className="py-14 sm:py-20 relative">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
             Let's Work <span className="gradient-text">Together</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
             Ready to bring your project to life? Get in touch and let's create something amazing
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -61,7 +61,7 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="space-y-8"
           >
-            <div className="glass rounded-2xl p-8">
+            <div className="glass rounded-2xl p-6 sm:p-8">
               <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
               
               <div className="space-y-6">
@@ -97,8 +97,8 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="glass rounded-2xl p-8">
-              <h3 className="text-xl font-bold mb-4">Why Choose Me?</h3>
+            <div className="glass rounded-2xl p-6 sm:p-8">
+              <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Why Choose Me?</h3>
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <span className="text-primary mt-1">✓</span>
@@ -127,7 +127,7 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <form onSubmit={handleSubmit} className="glass rounded-2xl p-8 space-y-6">
+            <form onSubmit={handleSubmit} className="glass rounded-2xl p-6 sm:p-8 space-y-5 sm:space-y-6">
               <div>
                 <label className="block text-sm font-medium mb-2">Name</label>
                 <Input

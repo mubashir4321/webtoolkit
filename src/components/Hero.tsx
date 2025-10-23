@@ -33,7 +33,7 @@ const Hero = () => {
           className="text-center max-w-4xl mx-auto"
         >
           <motion.h1 
-            className="text-5xl md:text-7xl font-bold mb-6"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
@@ -43,7 +43,7 @@ const Hero = () => {
           </motion.h1>
           
           <motion.p 
-            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
@@ -77,21 +77,21 @@ const Hero = () => {
 
           {/* Stats */}
           <motion.div 
-            className="grid grid-cols-3 gap-8 mt-16 max-w-2xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
           >
             <div className="text-center">
-              <div className="text-4xl font-bold gradient-text mb-2">50+</div>
+              <div className="text-3xl sm:text-4xl font-bold gradient-text mb-2">50+</div>
               <div className="text-muted-foreground">Projects Completed</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold gradient-text mb-2">7</div>
+              <div className="text-3xl sm:text-4xl font-bold gradient-text mb-2">7</div>
               <div className="text-muted-foreground">Core Expertise</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold gradient-text mb-2">100%</div>
+              <div className="text-3xl sm:text-4xl font-bold gradient-text mb-2">100%</div>
               <div className="text-muted-foreground">Client Satisfaction</div>
             </div>
           </motion.div>

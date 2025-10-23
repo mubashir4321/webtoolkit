@@ -26,7 +26,7 @@ const FloatingShape = ({ position, color, scale = 1 }: { position: [number, numb
 
 const Scene3D = () => {
   return (
-    <div className="fixed top-0 left-0 w-full h-screen pointer-events-none z-0 opacity-30">
+    <div className="hidden sm:block fixed top-0 left-0 w-full h-screen pointer-events-none z-0 opacity-30">
       <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
