@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logoImg from '@/assets/webtoolkit logo.png';
 
 const navItems = [
   { label: 'Home', href: '#home' },
@@ -41,16 +42,22 @@ const Navigation = () => {
         }`}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-auto py-4">
             {/* Logo */}
-            <motion.div
+            <motion.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl font-bold"
+              onClick={() => scrollToSection('#home')}
+              className="flex items-center gap-2 focus:outline-none"
             >
-              <span className="gradient-text">DevPortfolio</span>
-            </motion.div>
+              <img
+                src={logoImg}
+                alt="Webtoolkit Logo"
+                className="h-40 md:h-48 w-auto select-none"
+                draggable={false}
+              />
+            </motion.button>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">

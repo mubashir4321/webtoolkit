@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { Code, Smartphone, Palette, Bot, TrendingUp, GraduationCap, Briefcase } from 'lucide-react';
+import { Code, Smartphone, Palette, Bot, TrendingUp, GraduationCap, Briefcase, Mail, MessageCircle } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const services = [
   {
@@ -47,6 +48,30 @@ const services = [
 ];
 
 const Services = () => {
+  const phoneNumber = '923705158694';
+
+  const openWhatsApp = (service: string) => {
+    const text = `Hello! I'm interested in ordering: ${service}.\n\nPlease share the next steps, pricing, and any details you need from me.`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+  };
+
+  const openEmail = (service: string) => {
+    const to = 'mbsirsakar5@gmail.com';
+    const subject = `Project Inquiry: ${service}`;
+    const body = `Hello,\n\nI would like to order the following service: ${service}.\n\nProject details:\n- Brief description:\n- Timeline:\n- Budget:\n\nPlease let me know the next steps.\n\nThanks!`;
+
+    // Prefer Gmail web compose
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const opened = window.open(gmailUrl, '_blank');
+
+    // Fallback to mailto if popup blocked or cannot open new tab
+    if (!opened) {
+      const mailtoUrl = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoUrl;
+    }
+  };
+
   return (
     <section id="services" className="py-14 sm:py-20 relative">
       <div className="container mx-auto px-4">
@@ -85,6 +110,23 @@ const Services = () => {
                 <p className="text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
+
+                {/* Order Actions */}
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <Button
+                    onClick={() => openWhatsApp(service.title)}
+                    className="bg-primary hover:bg-primary/90 w-full sm:w-auto"
+                  >
+                    <MessageCircle className="h-4 w-4 mr-2" /> Order via WhatsApp
+                  </Button>
+                  <Button
+                    onClick={() => openEmail(service.title)}
+                    variant="outline"
+                    className="w-full sm:w-auto"
+                  >
+                    <Mail className="h-4 w-4 mr-2" /> Order via Email
+                  </Button>
+                </div>
               </motion.div>
             );
           })}
