@@ -77,7 +77,7 @@ const ChatWidget = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: 'spring', damping: 20 }}
-            className="fixed bottom-24 left-3 right-3 sm:left-auto sm:right-6 w-auto sm:w-96 h-[70vh] sm:h-[500px] glass rounded-2xl shadow-2xl overflow-hidden z-50 flex flex-col"
+            className="fixed bottom-24 right-4 sm:right-6 w-[70vw] h-[70vh] glass rounded-2xl shadow-2xl overflow-hidden z-50 flex flex-col"
           >
             {/* Header */}
             <div className="bg-primary p-4">
