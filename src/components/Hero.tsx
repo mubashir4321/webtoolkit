@@ -38,8 +38,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Full-Stack Developer &{' '}
-            <span className="gradient-text">Creative Innovator</span>
+            Website & App Development{' '}
+            <span className="gradient-text">Company</span>
           </motion.h1>
           
           <motion.p 
@@ -48,7 +48,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            Transforming ideas into stunning digital experiences through cutting-edge web development, AI integration, and creative design.
+            Website development, mobile app development, AI chatbot development, graphic designing services, and SEO optimization—delivered with performance, accessibility, and business growth in mind.
           </motion.p>
           
           <motion.div 

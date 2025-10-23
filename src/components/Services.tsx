@@ -5,44 +5,44 @@ import { Button } from '@/components/ui/button';
 const services = [
   {
     icon: Code,
-    title: 'Web Development',
-    description: 'Building responsive, high-performance websites with modern frameworks like React, Next.js, and TypeScript.',
+    title: 'Website Development Services',
+    description: 'Responsive, SEO-friendly website development using modern tools like React, Next.js, and TypeScript.',
     gradient: 'from-purple-500 to-pink-500'
   },
   {
     icon: Smartphone,
-    title: 'App Development',
-    description: 'Creating cross-platform mobile applications with seamless user experiences and robust functionality.',
+    title: 'Mobile App Development',
+    description: 'Cross-platform mobile app development using industry-standard app development software and languages with seamless UX.',
     gradient: 'from-cyan-500 to-blue-500'
   },
   {
     icon: Palette,
-    title: 'Graphic Design',
-    description: 'Crafting visually stunning designs that capture attention and communicate your brand message effectively.',
+    title: 'Graphic Designing Services',
+    description: 'Branding, UI graphics, and marketing assets. Professional graphic design services in Pakistan and worldwide.',
     gradient: 'from-orange-500 to-red-500'
   },
   {
     icon: Bot,
-    title: 'AI Chatbot Integration',
-    description: 'Implementing intelligent chatbots powered by cutting-edge AI to enhance customer engagement and automate support.',
+    title: 'AI Chatbot Development',
+    description: 'AI chatbot development services and integrations to automate support, lead capture, and customer engagement.',
     gradient: 'from-green-500 to-emerald-500'
   },
   {
     icon: TrendingUp,
-    title: 'SEO Optimization',
-    description: 'Boosting your online visibility with data-driven SEO strategies that drive organic traffic and conversions.',
+    title: 'SEO Optimization Services',
+    description: 'On-page, technical, and content SEO optimization to improve rankings, visibility, and conversions.',
     gradient: 'from-yellow-500 to-orange-500'
   },
   {
     icon: GraduationCap,
-    title: 'Teaching Coding',
-    description: 'Mentoring aspiring developers through personalized coaching and comprehensive programming courses.',
+    title: 'Web & App Dev Courses',
+    description: 'Website development course and app development roadmap. Mentorship, training, and career guidance.',
     gradient: 'from-indigo-500 to-purple-500'
   },
   {
     icon: Briefcase,
-    title: 'Business Development',
-    description: 'Strategic freelancing guidance to help you build a sustainable and profitable digital business.',
+    title: 'Business Development Services',
+    description: 'Business development services (BDS): proposals, strategy, and growth playbooks for sustainable digital businesses.',
     gradient: 'from-teal-500 to-cyan-500'
   }
 ];
