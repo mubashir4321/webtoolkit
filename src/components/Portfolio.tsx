@@ -154,7 +154,14 @@ const Portfolio = () => {
                 }`}
               >
                 {project.image ? (
-                  <img src={project.image} alt={project.title} className="w-full h-full object-contain p-2 bg-background/30" />
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-contain p-2 bg-background/30"
+                    loading="lazy"
+                    decoding="async"
+                    fetchPriority="low"
+                  />
                 ) : (
                   <div className="w-full h-full" />
                 )}
@@ -196,10 +203,25 @@ const Portfolio = () => {
                       {(project as any).slides.map((slide: { image: string; url?: string }, i: number) => (
                         slide.url ? (
                           <a key={i} href={slide.url} target="_blank" rel="noopener noreferrer" className="shrink-0 snap-start">
-                            <img src={slide.image} alt={`${project.title} ${i+1}`} className="h-16 sm:h-20 w-auto object-contain rounded-md border border-border bg-background/50" />
+                            <img
+                              src={slide.image}
+                              alt={`${project.title} ${i+1}`}
+                              className="h-16 sm:h-20 w-auto object-contain rounded-md border border-border bg-background/50"
+                              loading="lazy"
+                              decoding="async"
+                              fetchPriority="low"
+                            />
                           </a>
                         ) : (
-                          <img key={i} src={slide.image} alt={`${project.title} ${i+1}`} className="h-16 sm:h-20 w-auto object-contain rounded-md border border-border bg-background/50 shrink-0 snap-start" />
+                          <img
+                            key={i}
+                            src={slide.image}
+                            alt={`${project.title} ${i+1}`}
+                            className="h-16 sm:h-20 w-auto object-contain rounded-md border border-border bg-background/50 shrink-0 snap-start"
+                            loading="lazy"
+                            decoding="async"
+                            fetchPriority="low"
+                          />
                         )
                       ))}
                     </div>

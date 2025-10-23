@@ -1,6 +1,6 @@
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Float, MeshDistortMaterial } from '@react-three/drei';
-import { motion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
 
 const FloatingShape = ({ position, color, scale = 1 }: { position: [number, number, number], color: string, scale?: number }) => {
   return (
@@ -25,9 +25,16 @@ const FloatingShape = ({ position, color, scale = 1 }: { position: [number, numb
 };
 
 const Scene3D = () => {
+  const prefersReducedMotion = useReducedMotion();
+  if (prefersReducedMotion) return null;
+
   return (
     <div className="hidden sm:block fixed top-0 left-0 w-full h-screen pointer-events-none z-0 opacity-30">
-      <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
+      <Canvas
+        camera={{ position: [0, 0, 10], fov: 45 }}
+        dpr={[1, 1.5]}
+        gl={{ antialias: false, powerPreference: 'high-performance' }}
+      >
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
         <pointLight position={[-10, -10, -5]} intensity={0.5} color="#a855f7" />
