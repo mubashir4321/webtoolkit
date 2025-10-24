@@ -42,7 +42,7 @@ const Navigation = () => {
         }`}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-auto py-4">
+          <div className="flex items-center justify-between h-auto py-2 sm:py-4">
             {/* Logo */}
             <motion.button
               initial={{ opacity: 0 }}
@@ -54,7 +54,7 @@ const Navigation = () => {
               <img
                 src={logoImg}
                 alt="Webtoolkit Logo"
-                className="h-40 md:h-48 w-auto select-none"
+                className="h-20 sm:h-24 md:h-32 lg:h-40 w-auto select-none"
                 draggable={false}
               />
             </motion.button>
