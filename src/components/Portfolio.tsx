@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import dealGuruImg from '@/assets/web projects/dealguru.png';
 import mazenoImg from '@/assets/web projects/mazeno adventures.png';
@@ -70,9 +71,9 @@ const projects = [
     tags: ['Freelancing', 'Upwork', 'Consulting'],
     image: bdThumb,
     slides: [
-      { image: bd1 },
+      { image: bd1, url: 'https://www.upwork.com/freelancers/~016106235a779af4e6' },
       { image: bd2b, url: 'https://fiverr.com/ar_alizada' },
-      { image: bd3 },
+      { image: bd3, url: 'https://www.upwork.com/freelancers/~014ec283672db93ac5' },
     ],
   },
   {
@@ -120,6 +121,13 @@ const projects = [
 ];
 
 const Portfolio = () => {
+  // Refs to control horizontal scrollers for projects with slides
+  const scrollerRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const scrollByAmount = 320; // px
+  const scrollLeft = (i: number) => scrollerRefs.current[i]?.scrollBy({ left: -scrollByAmount, behavior: 'smooth' });
+  const scrollRight = (i: number) => scrollerRefs.current[i]?.scrollBy({ left: scrollByAmount, behavior: 'smooth' });
+
   return (
     <section id="portfolio" className="py-14 sm:py-20 relative">
       <div className="container mx-auto px-4">
@@ -198,15 +206,47 @@ const Portfolio = () => {
                   {project.description}
                 </p>
                 {('slides' in project && (project as any).slides?.length) ? (
-                  <div className="mb-4 overflow-x-auto -mx-6 px-6">
-                    <div className="flex items-center gap-3 pr-2 snap-x snap-mandatory">
+                  <div className="mb-4 -mx-6 px-6 relative">
+                    {/* Gradient edge hints */}
+                    <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-background to-transparent rounded-l-lg" />
+                    <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-background to-transparent rounded-r-lg" />
+
+                    {/* Scroll buttons */}
+                    <button
+                      type="button"
+                      aria-label="Scroll left"
+                      onClick={() => scrollLeft(index)}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 h-8 w-8 rounded-full bg-background/80 border border-border shadow hover:bg-background transition-colors grid place-items-center"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </button>
+                    <button
+                      type="button"
+                      aria-label="Scroll right"
+                      onClick={() => scrollRight(index)}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 h-8 w-8 rounded-full bg-background/80 border border-border shadow hover:bg-background transition-colors grid place-items-center"
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
+
+                    <div
+                      ref={(el) => (scrollerRefs.current[index] = el)}
+                      className="overflow-x-auto scroll-smooth overscroll-x-contain no-scrollbar"
+                    >
+                      <div className="flex items-center gap-4 pr-3 snap-x snap-mandatory w-max">
                       {(project as any).slides.map((slide: { image: string; url?: string }, i: number) => (
                         slide.url ? (
-                          <a key={i} href={slide.url} target="_blank" rel="noopener noreferrer" className="shrink-0 snap-start">
+                          <a
+                            key={i}
+                            href={slide.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="shrink-0 snap-start group/slide"
+                          >
                             <img
                               src={slide.image}
                               alt={`${project.title} ${i+1}`}
-                              className="h-16 sm:h-20 w-auto object-contain rounded-md border border-border bg-background/50"
+                              className="h-20 sm:h-24 w-auto object-contain rounded-lg border border-border/80 bg-background/60 transition-transform duration-300 group-hover/slide:scale-[1.03] shadow-sm"
                               loading="lazy"
                               decoding="async"
                               fetchPriority="low"
@@ -217,13 +257,14 @@ const Portfolio = () => {
                             key={i}
                             src={slide.image}
                             alt={`${project.title} ${i+1}`}
-                            className="h-16 sm:h-20 w-auto object-contain rounded-md border border-border bg-background/50 shrink-0 snap-start"
+                            className="h-20 sm:h-24 w-auto object-contain rounded-lg border border-border/80 bg-background/60 shrink-0 snap-start shadow-sm"
                             loading="lazy"
                             decoding="async"
                             fetchPriority="low"
                           />
                         )
                       ))}
+                      </div>
                     </div>
                   </div>
                 ) : null}
