@@ -9,7 +9,12 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 sm:pt-40 md:pt-48">
+    <section
+      id="home"
+      role="banner"
+      aria-labelledby="hero-heading"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 sm:pt-40 md:pt-48"
+    >
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0"
@@ -33,13 +38,14 @@ const Hero = () => {
           className="text-center max-w-4xl mx-auto"
         >
           <motion.h1 
+            id="hero-heading"
             className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Website & App Development{' '}
-            <span className="gradient-text">Company</span>
+            WebToolkit: Website & Mobile App Development,{' '}
+            <span className="gradient-text">AI Chatbots, SEO & Design</span>
           </motion.h1>
           
           <motion.p 
@@ -48,7 +54,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            Website development, mobile app development, AI chatbot development, graphic designing services, and SEO optimization—delivered with performance, accessibility, and business growth in mind.
+            We build fast, SEO-friendly websites and mobile apps, integrate AI chatbots, craft brand design, and deliver technical & on-page SEO to grow your business.
           </motion.p>
           
           <motion.div 
@@ -59,6 +65,7 @@ const Hero = () => {
           >
             <Button 
               size="lg" 
+              aria-label="Start a project with WebToolkit"
               className="bg-primary hover:bg-primary/90 glow-primary transition-all duration-300"
               onClick={() => scrollToSection('contact')}
             >
@@ -68,6 +75,7 @@ const Hero = () => {
             <Button 
               size="lg" 
               variant="outline"
+              aria-label="Explore WebToolkit services"
               className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               onClick={() => scrollToSection('services')}
             >
