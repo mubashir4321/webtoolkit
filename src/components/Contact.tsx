@@ -16,9 +16,66 @@ const Contact = () => {
     budget: '',
     message: ''
   });
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Google Forms configuration
+  const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/u/0/d/1g9JmwFiXOXLZzgjR_vRpso7MqlrzjZQn-CsE03UgCfU/formResponse';
+  const ENTRY_NAME = 'entry.2045685767';
+  const ENTRY_EMAIL = 'entry.6501631';
+  const ENTRY_SERVICE = 'entry.1151847534';
+  const ENTRY_BUDGET = 'entry.1194604648';
+  const ENTRY_MESSAGE = 'entry.2007318848';
+
+  // Map service values to Google Form option labels
+  const mapService = (value: string) => {
+    const map: Record<string, string> = {
+      'web': 'Web Development',
+      'app': 'App Development',
+      'design': 'Graphic Design',
+      'ai': 'AI Chatbot Integration',
+      'seo': 'SEO',
+      'teaching': 'Coding Lessons',
+      'business': 'Business Development'
+    };
+    return map[value] || '';
+  };
+
+  // Map budget values to Google Form option labels
+  const mapBudget = (value: string) => {
+    const map: Record<string, string> = {
+      '1-10': '$1 - $10',
+      '10-100': '$10 - $100',
+      '100-1000': '$100 - $1000',
+      '1000-5000': '$1,000 - $5,000',
+      '5000-10000': '$5,000 - $10,000',
+      '10000+': '$10,000 +'
+    };
+    return map[value] || '';
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (submitting) return;
+    setSubmitting(true);
+
+    // Submit to Google Forms
+    try {
+      const formDataPayload = new FormData();
+      formDataPayload.append(ENTRY_NAME, formData.name);
+      formDataPayload.append(ENTRY_EMAIL, formData.email);
+      formDataPayload.append(ENTRY_SERVICE, mapService(formData.service));
+      formDataPayload.append(ENTRY_BUDGET, mapBudget(formData.budget));
+      formDataPayload.append(ENTRY_MESSAGE, formData.message);
+
+      await fetch(GOOGLE_FORM_ACTION, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formDataPayload
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+    }
     
     toast({
       title: "Message Sent!",
@@ -32,6 +89,7 @@ const Contact = () => {
       budget: '',
       message: ''
     });
+    setSubmitting(false);
   };
 
   return (
@@ -184,10 +242,12 @@ const Contact = () => {
                     <SelectValue placeholder="Select budget range" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="1">$500 - $1,000</SelectItem>
-                    <SelectItem value="2">$1,000 - $5,000</SelectItem>
-                    <SelectItem value="3">$5,000 - $10,000</SelectItem>
-                    <SelectItem value="4">$10,000+</SelectItem>
+                    <SelectItem value="1-10">$1 - $10</SelectItem>
+                    <SelectItem value="10-100">$10 - $100</SelectItem>
+                    <SelectItem value="100-1000">$100 - $1000</SelectItem>
+                    <SelectItem value="1000-5000">$1,000 - $5,000</SelectItem>
+                    <SelectItem value="5000-10000">$5,000 - $10,000</SelectItem>
+                    <SelectItem value="10000+">$10,000 +</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -203,8 +263,8 @@ const Contact = () => {
                 />
               </div>
 
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 glow-primary" size="lg">
-                Send Message
+              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 glow-primary" size="lg" disabled={submitting}>
+                {submitting ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
           </motion.div>
