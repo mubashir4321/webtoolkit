@@ -39,12 +39,13 @@ const Hero = () => {
         >
           <motion.h1 
             id="hero-heading"
-            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <span className="gradient-text">Provide a services of Website & Mobile App Development, AI Chatbots, SEO & Graphic Design</span>
+            Website & Mobile App Development,{' '}
+            <span className="gradient-text">AI Chatbots, SEO & Graphic Design</span>
           </motion.h1>
           
           <motion.p 
