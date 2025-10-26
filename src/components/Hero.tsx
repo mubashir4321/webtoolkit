@@ -44,8 +44,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            WebToolkit: Website & Mobile App Development,{' '}
-            <span className="gradient-text">AI Chatbots, SEO & Design</span>
+            Website & Mobile App Development,{' '}
+            <span className="gradient-text">AI Chatbots, SEO & Graphic Design</span>
           </motion.h1>
           
           <motion.p 
