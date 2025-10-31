@@ -12,6 +12,9 @@ import bdThumb from '@/assets/bd projects/bd thumnail.png';
 import bd1 from '@/assets/bd projects/bd project 1.png';
 import bd3 from '@/assets/bd projects/bd project 3.png';
 import bd2b from '@/assets/bd projects/bd project2.png';
+import portfolioImg from '@/assets/graphic projects/portfolio.png';
+import ecommImg from '@/assets/web projects/E commarce.png';
+import aiChatbotImg from '@/assets/ai chatbot project/ai chat bot.mp4';
 
 const projects = [
   // Newly added Web Development projects with thumbnails
@@ -81,6 +84,8 @@ const projects = [
     category: 'Web Development',
     description: 'Full-stack online store with payment integration and inventory management',
     tags: ['React', 'Node.js', 'Stripe'],
+    image: ecommImg,
+    url: 'https://connect-master-dahsboard-production.up.railway.app/',
     gradient: 'from-purple-500 to-pink-500'
   },
   {
@@ -95,6 +100,8 @@ const projects = [
     category: 'Graphic Design',
     description: 'Complete branding package including logos, style guides, and marketing materials',
     tags: ['Figma', 'Illustrator', 'Branding'],
+    image: portfolioImg,
+    url: 'https://www.behance.net/rupaltechhub',
     gradient: 'from-orange-500 to-red-500'
   },
   {
@@ -109,6 +116,8 @@ const projects = [
     category: 'AI Chatbot',
     description: '24/7 automated support system with natural language processing',
     tags: ['Python', 'TensorFlow', 'NLP'],
+    image: aiChatbotImg,
+    url: 'https://github.com/rupaltechhub/asno-ai-assistant',
     gradient: 'from-indigo-500 to-purple-500'
   },
   {
@@ -127,6 +136,11 @@ const Portfolio = () => {
   const scrollByAmount = 320; // px
   const scrollLeft = (i: number) => scrollerRefs.current[i]?.scrollBy({ left: -scrollByAmount, behavior: 'smooth' });
   const scrollRight = (i: number) => scrollerRefs.current[i]?.scrollBy({ left: scrollByAmount, behavior: 'smooth' });
+
+  // Helper function to check if a file is a video based on its extension
+  const isVideo = (fileName: string) => {
+    return fileName?.endsWith('.mp4') || fileName?.endsWith('.webm') || fileName?.endsWith('.ogg');
+  };
 
   return (
     <section id="portfolio" className="py-14 sm:py-20 relative">
@@ -162,14 +176,26 @@ const Portfolio = () => {
                 }`}
               >
                 {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-contain p-2 bg-background/30"
-                    loading="lazy"
-                    decoding="async"
-                    fetchPriority="low"
-                  />
+                  isVideo(project.image) ? (
+                    <video
+                      src={project.image}
+                      className="w-full h-full object-contain p-2 bg-background/30"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      disablePictureInPicture
+                    />
+                  ) : (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-contain p-2 bg-background/30"
+                      loading="lazy"
+                      decoding="async"
+                      fetchPriority="low"
+                    />
+                  )
                 ) : (
                   <div className="w-full h-full" />
                 )}
