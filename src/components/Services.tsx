@@ -57,9 +57,20 @@ const Services = () => {
   };
 
   const openEmail = (service: string) => {
-    const to = 'mbsirsakar5@gmail.com';
+    const to = 'rupaltechhub@gmail.com';
     const subject = `Project Inquiry: ${service}`;
-    const body = `Hello,\n\nI would like to order the following service: ${service}.\n\nProject details:\n- Brief description:\n- Timeline:\n- Budget:\n\nPlease let me know the next steps.\n\nThanks!`;
+    const body = `Hello,
+
+I would like to order the following service: ${service}.
+
+Project details:
+- Brief description:
+- Timeline:
+- Budget:
+
+Please let me know the next steps.
+
+Thanks!`;
 
     // Prefer Gmail web compose
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
